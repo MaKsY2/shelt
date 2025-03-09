@@ -1,4 +1,4 @@
-module github.com/yourusername/your-repo/src/services/auth
+module github.com/MaKsY2/shelt/src/services/auth
 
 go 1.24.1
 
