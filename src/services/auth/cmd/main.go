@@ -4,10 +4,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/MaKsY2/shelt/auth/internal/config"
-	"github.com/MaKsY2/shelt/auth/internal/controller"
-	"github.com/MaKsY2/shelt/auth/internal/repository"
-	"github.com/MaKsY2/shelt/auth/internal/service"
+	"github.com/MaKsY2/shelt/src/services/auth/internal/config"
+	"github.com/MaKsY2/shelt/src/services/auth/internal/controller"
+	"github.com/MaKsY2/shelt/src/services/auth/internal/repository"
+	"github.com/MaKsY2/shelt/src/services/auth/internal/service"
 	"github.com/gorilla/mux"
 )
 
