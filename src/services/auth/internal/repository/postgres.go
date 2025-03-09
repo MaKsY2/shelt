@@ -1,1 +1,1 @@
-package postgres_repository
+package repository

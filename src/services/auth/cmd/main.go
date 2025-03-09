@@ -6,7 +6,7 @@ import (
 
 	"github.com/MaKsY2/shelt/src/services/auth/internal/config"
 	"github.com/MaKsY2/shelt/src/services/auth/internal/controller"
-	"github.com/MaKsY2/shelt/src/services/auth/internal/repository"
+	"github.com/MaKsY2/shelt/src/services/auth/internal/postgres_repository"
 	"github.com/MaKsY2/shelt/src/services/auth/internal/service"
 	"github.com/gorilla/mux"
 )
