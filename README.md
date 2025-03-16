@@ -1,3 +1,3 @@
 # shelt
-private go backend for shelt
-ну уже не прайват получается 
+**non**-private go backend for shelt
+ну уже и прайват получается 
