@@ -6,27 +6,24 @@ import (
 
 	"github.com/MaKsY2/shelt/src/services/auth/internal/config"
 	"github.com/MaKsY2/shelt/src/services/auth/internal/controller"
-	"github.com/MaKsY2/shelt/src/services/auth/internal/postgres_repository"
+	"github.com/MaKsY2/shelt/src/services/auth/internal/repository"
 	"github.com/MaKsY2/shelt/src/services/auth/internal/service"
-	"github.com/gorilla/mux"
 )
 
 func main() {
 	cfg := config.Load()
 
-	repo, err := repository.NewPostgresRepo(cfg)
+	repo, err := repository.NewRepository(cfg)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	authService := service.NewAuthService(repo, cfg.JWTSecret)
-	authController := controller.NewAuthController(authService)
+	authSvc := service.NewAuthService(repo, cfg.JWTSecret)
+	authHandler := handler.NewHandler(authSvc)
 
-	r := mux.NewRouter()
+	http.HandleFunc("/register", authHandler.Register)
+	http.HandleFunc("/login", authHandler.Login)
 
-	r.HandleFunc("/register", authController.Register).Methods("POST")
-	r.HandleFunc("/login", authController.Login).Methods("POST")
-
-	log.Println("Auth service started on port", cfg.ServerPort)
-	http.ListenAndServe(":"+cfg.ServerPort, r)
+	log.Printf("Server listening on port %s", cfg.ServerPort)
+	http.ListenAndServe(":"+cfg.ServerPort, nil)
 }
